@@ -361,7 +361,7 @@ export const createSimplifyConstant = /* #__PURE__ */ factory(name, dependencies
             const args = node.args.map(arg => foldFraction(arg, options))
 
             // If all args are numbers
-            if (!args.some(isNode)) {
+            if (!args.some(isNode) && !options.exactConstantFunctions) {
               try {
                 return _eval(node.name, args, options)
               } catch (ignoreandcontinue) { }
